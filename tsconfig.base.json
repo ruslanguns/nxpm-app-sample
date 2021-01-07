@@ -14,7 +14,25 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@app-core/api-app-module": ["apps/api/src/app/app.module.ts"],
+      "@app-core/api/auth/data-access": ["libs/api/auth/data-access/src/index.ts"],
+      "@app-core/api/auth/feature": ["libs/api/auth/feature/src/index.ts"],
+      "@app-core/api/core/data-access": ["libs/api/core/data-access/src/index.ts"],
+      "@app-core/api/core/feature": ["libs/api/core/feature/src/index.ts"],
+      "@app-core/web/about/feature": ["libs/web/about/feature/src/index.ts"],
+      "@app-core/web/assets": ["libs/web/assets/src/index.ts"],
+      "@app-core/web/auth/data-access": ["libs/web/auth/data-access/src/index.ts"],
+      "@app-core/web/auth/feature": ["libs/web/auth/feature/src/index.ts"],
+      "@app-core/web/auth/ui": ["libs/web/auth/ui/src/index.ts"],
+      "@app-core/web/core/data-access": ["libs/web/core/data-access/src/index.ts"],
+      "@app-core/web/core/feature": ["libs/web/core/feature/src/index.ts"],
+      "@app-core/web/dashboard/feature": ["libs/web/dashboard/feature/src/index.ts"],
+      "@app-core/web/layout": ["libs/web/layout/src/index.ts"],
+      "@app-core/web/shell/feature": ["libs/web/shell/feature/src/index.ts"],
+      "@app-core/web/style": ["libs/web/style/src/index.ts"],
+      "@app-core/web/ui-form": ["libs/web/ui-form/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
