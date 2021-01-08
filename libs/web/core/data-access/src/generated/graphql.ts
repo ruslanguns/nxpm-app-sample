@@ -3,9 +3,7 @@ import { Injectable } from '@angular/core'
 import * as Apollo from 'apollo-angular'
 import * as ApolloCore from '@apollo/client/core'
 export type Maybe<T> = T | null
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K]
-}
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] }
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> }
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> }
 /** All built-in and custom scalars, mapped to their actual values */
@@ -121,9 +119,7 @@ export type UserDetailsFragment = { __typename?: 'User' } & Pick<
 
 export type MeQueryVariables = Exact<{ [key: string]: never }>
 
-export type MeQuery = { __typename?: 'Query' } & {
-  me?: Maybe<{ __typename?: 'User' } & UserDetailsFragment>
-}
+export type MeQuery = { __typename?: 'Query' } & { me?: Maybe<{ __typename?: 'User' } & UserDetailsFragment> }
 
 export type LogoutMutationVariables = Exact<{ [key: string]: never }>
 
