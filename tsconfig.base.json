@@ -25,6 +25,7 @@
       "@app-core/web/auth/data-access": ["libs/web/auth/data-access/src/index.ts"],
       "@app-core/web/auth/feature": ["libs/web/auth/feature/src/index.ts"],
       "@app-core/web/auth/ui": ["libs/web/auth/ui/src/index.ts"],
+      "@app-core/web/blog/feature": ["libs/web/blog/feature/src/index.ts"],
       "@app-core/web/core/data-access": ["libs/web/core/data-access/src/index.ts"],
       "@app-core/web/core/feature": ["libs/web/core/feature/src/index.ts"],
       "@app-core/web/dashboard/feature": ["libs/web/dashboard/feature/src/index.ts"],

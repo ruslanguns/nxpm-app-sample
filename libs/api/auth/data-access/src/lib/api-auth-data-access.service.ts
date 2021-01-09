@@ -59,16 +59,25 @@ export class ApiAuthDataAccessService {
     return this.findUserById(userId)
   }
 
-  public findUserByEmail(email: string) {
-    return this.data.user.findUnique({ where: { email } })
+  public async findUserByEmail(email: string) {
+    return await this.data.user.findUnique({
+      where: { email },
+      include: { posts: { include: { categories: { include: { category: true, post: true } }, author: true } } },
+    })
   }
 
-  public findUserById(userId: string) {
-    return this.data.user.findUnique({ where: { id: userId } })
+  public async findUserById(userId: string) {
+    return await this.data.user.findUnique({
+      where: { id: userId },
+      include: { posts: { include: { categories: { include: { category: true, post: true } }, author: true } } },
+    })
   }
 
-  public findUserByUsername(username: string) {
-    return this.data.user.findUnique({ where: { username } })
+  public async findUserByUsername(username: string) {
+    return await this.data.user.findUnique({
+      where: { username },
+      include: { posts: { include: { categories: { include: { category: true, post: true } }, author: true } } },
+    })
   }
 
   async createUser(input: Partial<UserCreateInput>) {

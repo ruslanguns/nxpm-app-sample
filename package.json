@@ -13,7 +13,7 @@
     "prisma:apply": "yarn prisma:format && yarn prisma db push --preview-feature",
     "prisma:format": "yarn prisma format",
     "prisma:generate": "yarn prisma generate",
-    "prisma:migrate": "yarn prisma migrate save --experimental && yarn prisma migrate up --experimental",
+    "prisma:migrate": "yarn prisma migrate && yarn prisma migrate up",
     "prisma:studio": "yarn prisma studio",
     "build": "yarn build:web && yarn build:api",
     "start": "node dist/apps/api/main.js",

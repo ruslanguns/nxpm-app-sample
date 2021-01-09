@@ -19,5 +19,6 @@ module.exports = {
     '<rootDir>/libs/web/layout',
     '<rootDir>/libs/web/style',
     '<rootDir>/libs/web/ui-form',
+    '<rootDir>/libs/web/blog/feature',
   ],
 }

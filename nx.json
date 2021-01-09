@@ -59,6 +59,9 @@
     "web-auth-ui": {
       "tags": ["scope:web", "type:ui"]
     },
+    "web-blog-feature": {
+      "tags": ["scope:web", "type:feature"]
+    },
     "web-core-data-access": {
       "tags": ["scope:web", "type:data-access"]
     },

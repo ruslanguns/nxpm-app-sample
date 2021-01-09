@@ -352,6 +352,28 @@
         }
       }
     },
+    "web-blog-feature": {
+      "projectType": "library",
+      "root": "libs/web/blog/feature",
+      "sourceRoot": "libs/web/blog/feature/src",
+      "prefix": "app-core",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/web/blog/feature/src/**/*.ts", "libs/web/blog/feature/src/**/*.html"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/blog/feature"],
+          "options": {
+            "jestConfig": "libs/web/blog/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "web-core-data-access": {
       "projectType": "library",
       "root": "libs/web/core/data-access",

@@ -40,4 +40,40 @@ export class User {
   role: Role
 
   password?: string
+
+  @Field(() => [Post], { nullable: true })
+  posts: Post[]
+}
+
+@ObjectType()
+export class Post {
+  @Field({ nullable: true })
+  id: string
+
+  @Field({ nullable: true })
+  title: string
+
+  @Field(() => User, { nullable: true })
+  author: User
+
+  @Field(() => [CategoryOnPost], { nullable: true })
+  categories: CategoryOnPost[]
+}
+
+@ObjectType()
+export class Category {
+  @Field({ nullable: true })
+  id: string
+
+  @Field({ nullable: true })
+  name: string
+}
+
+@ObjectType()
+export class CategoryOnPost {
+  @Field({ nullable: true })
+  categoryId: string
+
+  @Field(() => Category, { nullable: true })
+  category: Category
 }

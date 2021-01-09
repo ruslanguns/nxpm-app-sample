@@ -28,6 +28,7 @@ export class WebLayoutComponent {
   footerHtml = `Copyright &copy; ${new Date().getFullYear()}`
   linksLeft: { label: string; route: string }[] = [{ label: 'Dashboard', route: '/dashboard' }]
   linksRight: { label: string; route: string }[] = [
+    { label: 'Blog', route: '/blog' },
     { label: 'About', route: '/about' },
     { label: 'Logout', route: '/logout' },
   ]

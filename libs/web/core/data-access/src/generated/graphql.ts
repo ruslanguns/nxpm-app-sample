@@ -19,6 +19,18 @@ export type Scalars = {
   JSON: any
 }
 
+export type Category = {
+  __typename?: 'Category'
+  id?: Maybe<Scalars['String']>
+  name?: Maybe<Scalars['String']>
+}
+
+export type CategoryOnPost = {
+  __typename?: 'CategoryOnPost'
+  category?: Maybe<Category>
+  categoryId?: Maybe<Scalars['String']>
+}
+
 export type IntercomMessage = {
   __typename?: 'IntercomMessage'
   payload?: Maybe<Scalars['JSON']>
@@ -51,6 +63,14 @@ export type MutationLoginArgs = {
 
 export type MutationRegisterArgs = {
   input: RegisterInput
+}
+
+export type Post = {
+  __typename?: 'Post'
+  author?: Maybe<User>
+  categories?: Maybe<Array<CategoryOnPost>>
+  id?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
 }
 
 export type Query = {
@@ -96,6 +116,7 @@ export type User = {
   lastName?: Maybe<Scalars['String']>
   location?: Maybe<Scalars['String']>
   phone?: Maybe<Scalars['String']>
+  posts?: Maybe<Array<Post>>
   role?: Maybe<Role>
   updatedAt?: Maybe<Scalars['DateTime']>
   username?: Maybe<Scalars['String']>

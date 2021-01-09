@@ -21,6 +21,10 @@ const routes: Routes = [
         path: 'dashboard',
         loadChildren: () => import('@app-core/web/dashboard/feature').then((m) => m.WebDashboardFeatureModule),
       },
+      {
+        path: 'blog',
+        loadChildren: () => import('@app-core/web/blog/feature').then((m) => m.WebBlogFeatureModule),
+      },
     ],
   },
   {
