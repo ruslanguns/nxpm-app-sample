@@ -7,8 +7,8 @@ import { Response } from 'express'
 import { getGravatarUrl, hashPassword, validatePassword } from './api-auth-data-access.helper'
 import { LoginInput } from './dto/login.input'
 import { RegisterInput } from './dto/register.input'
-import { UserToken } from './models/user-token'
-import { Role } from './models/role'
+import { UserToken } from './models/user-token.model'
+import { Role } from './models/role.model'
 
 @Injectable()
 export class ApiAuthDataAccessService {

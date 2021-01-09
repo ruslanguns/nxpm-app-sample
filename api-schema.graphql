@@ -3,19 +3,13 @@
 # ------------------------------------------------------
 
 type Category {
-  id: String
-  name: String
+  id: ID!
 }
 
 type CategoryOnPost {
   category: Category
-  categoryId: String
+  categoryId: ID!
 }
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
 
 type IntercomMessage {
   payload: JSON
@@ -43,8 +37,7 @@ type Mutation {
 type Post {
   author: User
   categories: [CategoryOnPost!]
-  id: String
-  title: String
+  id: ID!
 }
 
 type Query {
@@ -73,19 +66,9 @@ type Subscription {
 }
 
 type User {
-  avatarUrl: String
-  bio: String
-  createdAt: DateTime
-  email: String
-  firstName: String
-  id: String
-  lastName: String
-  location: String
-  phone: String
+  id: ID!
   posts: [Post!]
   role: Role
-  updatedAt: DateTime
-  username: String
 }
 
 type UserToken {
