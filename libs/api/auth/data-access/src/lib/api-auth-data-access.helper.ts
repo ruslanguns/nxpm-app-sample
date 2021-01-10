@@ -2,8 +2,7 @@ import { compareSync, hashSync } from 'bcryptjs'
 import { createHash } from 'crypto'
 import { Request } from 'express'
 
-const getHash = (str) => createHash('md5').update(str).digest('hex')
-
+const getHash = (str: string) => createHash('md5').update(str).digest('hex')
 const gravatarUrl = 'https://www.gravatar.com/avatar/'
 const gravatarSize = 460
 
