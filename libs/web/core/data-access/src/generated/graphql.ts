@@ -21,14 +21,14 @@ export type Scalars = {
 
 export type Category = {
   __typename?: 'Category'
-  id?: Maybe<Scalars['String']>
-  name?: Maybe<Scalars['String']>
+  id: Scalars['ID']
+  name: Scalars['String']
 }
 
 export type CategoryOnPost = {
   __typename?: 'CategoryOnPost'
   category?: Maybe<Category>
-  categoryId?: Maybe<Scalars['String']>
+  categoryId: Scalars['ID']
 }
 
 export type IntercomMessage = {
@@ -69,8 +69,8 @@ export type Post = {
   __typename?: 'Post'
   author?: Maybe<User>
   categories?: Maybe<Array<CategoryOnPost>>
-  id?: Maybe<Scalars['String']>
-  title?: Maybe<Scalars['String']>
+  id: Scalars['ID']
+  title: Scalars['String']
 }
 
 export type Query = {
@@ -107,19 +107,25 @@ export type SubscriptionIntercomSubArgs = {
 
 export type User = {
   __typename?: 'User'
+  /** User avatar image - By default extract gravatar related to email, but you can use another URL */
   avatarUrl?: Maybe<Scalars['String']>
   bio?: Maybe<Scalars['String']>
+  /** Creation date - This field is created automatically */
   createdAt?: Maybe<Scalars['DateTime']>
-  email?: Maybe<Scalars['String']>
+  /** User email - Must be unique */
+  email: Scalars['String']
   firstName?: Maybe<Scalars['String']>
-  id?: Maybe<Scalars['String']>
+  id: Scalars['ID']
   lastName?: Maybe<Scalars['String']>
   location?: Maybe<Scalars['String']>
+  password?: Maybe<Scalars['String']>
   phone?: Maybe<Scalars['String']>
   posts?: Maybe<Array<Post>>
   role?: Maybe<Role>
+  /** Last updated date - This field is created automatically */
   updatedAt?: Maybe<Scalars['DateTime']>
-  username?: Maybe<Scalars['String']>
+  /** User username - Must be unique */
+  username: Scalars['String']
 }
 
 export type UserToken = {

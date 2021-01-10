@@ -1,45 +1,40 @@
-import { Field, ObjectType } from '@nestjs/graphql'
+import { Field, ID, ObjectType } from '@nestjs/graphql'
 import { Role } from './role'
 
 @ObjectType()
 export class User {
-  @Field({ nullable: true })
+  @Field((type) => ID)
   id: string
 
-  @Field({ nullable: true })
-  createdAt: Date
+  /** Creation date - This field is created automatically */
+  createdAt?: Date
 
-  @Field({ nullable: true })
-  updatedAt: Date
+  /** Last updated date - This field is created automatically */
+  updatedAt?: Date
 
-  @Field({ nullable: true })
-  email: string
+  /** User email - Must be unique */
+  email!: string
 
-  @Field({ nullable: true })
-  phone: string
+  phone?: string
 
-  @Field({ nullable: true })
-  username?: string
+  /** User username - Must be unique */
+  username!: string
 
-  @Field({ nullable: true })
   firstName?: string
 
-  @Field({ nullable: true })
   lastName?: string
 
-  @Field({ nullable: true })
+  /** User avatar image - By default extract gravatar related to email, but you can use another URL */
   avatarUrl?: string
 
-  @Field({ nullable: true })
   location?: string
 
-  @Field({ nullable: true })
   bio?: string
+
+  password?: string
 
   @Field(() => Role, { nullable: true })
   role: Role
-
-  password?: string
 
   @Field(() => [Post], { nullable: true })
   posts: Post[]
@@ -47,10 +42,9 @@ export class User {
 
 @ObjectType()
 export class Post {
-  @Field({ nullable: true })
+  @Field((type) => ID)
   id: string
 
-  @Field({ nullable: true })
   title: string
 
   @Field(() => User, { nullable: true })
@@ -62,16 +56,15 @@ export class Post {
 
 @ObjectType()
 export class Category {
-  @Field({ nullable: true })
+  @Field((type) => ID)
   id: string
 
-  @Field({ nullable: true })
   name: string
 }
 
 @ObjectType()
 export class CategoryOnPost {
-  @Field({ nullable: true })
+  @Field((type) => ID)
   categoryId: string
 
   @Field(() => Category, { nullable: true })

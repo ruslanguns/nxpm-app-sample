@@ -3,13 +3,13 @@
 # ------------------------------------------------------
 
 type Category {
-  id: String
-  name: String
+  id: ID!
+  name: String!
 }
 
 type CategoryOnPost {
   category: Category
-  categoryId: String
+  categoryId: ID!
 }
 
 """
@@ -43,8 +43,8 @@ type Mutation {
 type Post {
   author: User
   categories: [CategoryOnPost!]
-  id: String
-  title: String
+  id: ID!
+  title: String!
 }
 
 type Query {
@@ -73,19 +73,31 @@ type Subscription {
 }
 
 type User {
+  """
+  User avatar image - By default extract gravatar related to email, but you can use another URL
+  """
   avatarUrl: String
   bio: String
+
+  """Creation date - This field is created automatically"""
   createdAt: DateTime
-  email: String
+
+  """User email - Must be unique"""
+  email: String!
   firstName: String
-  id: String
+  id: ID!
   lastName: String
   location: String
+  password: String
   phone: String
   posts: [Post!]
   role: Role
+
+  """Last updated date - This field is created automatically"""
   updatedAt: DateTime
-  username: String
+
+  """User username - Must be unique"""
+  username: String!
 }
 
 type UserToken {
