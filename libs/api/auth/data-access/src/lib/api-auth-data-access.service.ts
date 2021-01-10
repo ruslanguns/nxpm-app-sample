@@ -8,7 +8,7 @@ import { getGravatarUrl, hashPassword, validatePassword } from './api-auth-data-
 import { LoginInput } from './dto/login.input'
 import { RegisterInput } from './dto/register.input'
 import { UserToken } from './models/user-token.model'
-import { Role } from './models/role.model'
+import { Role } from './models/role'
 
 @Injectable()
 export class ApiAuthDataAccessService {
@@ -81,7 +81,6 @@ export class ApiAuthDataAccessService {
   }
 
   async createUser(input: Partial<UserCreateInput>) {
-    const submittedPassword = !!input.password
     const password = input.password
     const hashedPassword = hashPassword(password)
     const email = input.email.trim()

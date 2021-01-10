@@ -1,20 +1,36 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql'
-import { Role } from './role.model'
+import { Role } from './role'
 
 @ObjectType()
 export class User {
   @Field((type) => ID)
   id: string
-  createdAt: Date
-  updatedAt: Date
-  email: string
-  phone: string
-  username?: string
+
+  /** Creation date - This field is created automatically */
+  createdAt?: Date
+
+  /** Last updated date - This field is created automatically */
+  updatedAt?: Date
+
+  /** User email - Must be unique */
+  email!: string
+
+  phone?: string
+
+  /** User username - Must be unique */
+  username!: string
+
   firstName?: string
+
   lastName?: string
+
+  /** User avatar image - By default extract gravatar related to email, but you can use another URL */
   avatarUrl?: string
+
   location?: string
+
   bio?: string
+
   password?: string
 
   @Field(() => Role, { nullable: true })
@@ -42,6 +58,7 @@ export class Post {
 export class Category {
   @Field((type) => ID)
   id: string
+
   name: string
 }
 
