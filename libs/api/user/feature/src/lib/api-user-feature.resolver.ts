@@ -5,6 +5,6 @@ import { Parent, ResolveField, Resolver } from '@nestjs/graphql'
 export class ApiUserFeatureResolver {
   @ResolveField(() => [Post], { nullable: true })
   posts(@Parent() user: User) {
-    return (user as any).posts
+    return user.posts
   }
 }

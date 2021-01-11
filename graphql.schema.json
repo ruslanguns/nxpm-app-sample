@@ -74,45 +74,6 @@
         "possibleTypes": null
       },
       {
-        "kind": "OBJECT",
-        "name": "CategoryOnPost",
-        "description": null,
-        "fields": [
-          {
-            "name": "category",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "Category",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "categoryId",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "ID",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
         "kind": "SCALAR",
         "name": "DateTime",
         "description": "A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.",
@@ -381,7 +342,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "CategoryOnPost",
+                  "name": "Category",
                   "ofType": null
                 }
               }
@@ -479,16 +440,6 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "avatarUrl",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
             "name": "email",
             "description": null,
             "type": {
@@ -506,9 +457,13 @@
             "name": "firstName",
             "description": null,
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -516,9 +471,13 @@
             "name": "lastName",
             "description": null,
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -540,9 +499,13 @@
             "name": "phone",
             "description": null,
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -550,9 +513,13 @@
             "name": "username",
             "description": null,
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "defaultValue": null
           }
@@ -635,12 +602,16 @@
         "fields": [
           {
             "name": "avatarUrl",
-            "description": "User avatar image - By default extract gravatar related to email, but you can use another URL",
+            "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -650,28 +621,36 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "createdAt",
-            "description": "Creation date - This field is created automatically",
+            "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "DateTime",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "email",
-            "description": "User email - Must be unique",
+            "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -690,9 +669,13 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -718,9 +701,13 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -730,9 +717,13 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -742,9 +733,13 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -754,9 +749,13 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -795,19 +794,23 @@
           },
           {
             "name": "updatedAt",
-            "description": "Last updated date - This field is created automatically",
+            "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "DateTime",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "username",
-            "description": "User username - Must be unique",
+            "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",

@@ -3,7 +3,7 @@ import { Field, ObjectType } from '@nestjs/graphql'
 
 @ObjectType()
 export class UserToken {
-  /** JWT Bearer token */
+  @Field({ description: 'JWT Bearer token' })
   token: string
 
   @Field(() => User)

@@ -4,11 +4,7 @@
 
 type Category {
   id: ID!
-}
-
-type CategoryOnPost {
-  category: Category
-  categoryId: ID!
+  name: String!
 }
 
 """
@@ -41,8 +37,9 @@ type Mutation {
 
 type Post {
   author: User
-  categories: [CategoryOnPost!]
+  categories: [Category!]
   id: ID!
+  title: String!
 }
 
 type Query {
@@ -52,10 +49,10 @@ type Query {
 
 input RegisterInput {
   email: String!
-  firstName: String
-  lastName: String
+  firstName: String!
+  lastName: String!
   password: String!
-  phone: String
+  phone: String!
   username: String!
 }
 
@@ -70,30 +67,19 @@ type Subscription {
 }
 
 type User {
-  """
-  User avatar image - By default extract gravatar related to email, but you can use another URL
-  """
-  avatarUrl: String
-  bio: String
-
-  """Creation date - This field is created automatically"""
-  createdAt: DateTime
-
-  """User email - Must be unique"""
+  avatarUrl: String!
+  bio: String!
+  createdAt: DateTime!
   email: String!
-  firstName: String
+  firstName: String!
   id: ID!
-  lastName: String
-  location: String
-  password: String
-  phone: String
+  lastName: String!
+  location: String!
+  password: String!
+  phone: String!
   posts: [Post!]
   role: Role
-
-  """Last updated date - This field is created automatically"""
-  updatedAt: DateTime
-
-  """User username - Must be unique"""
+  updatedAt: DateTime!
   username: String!
 }
 

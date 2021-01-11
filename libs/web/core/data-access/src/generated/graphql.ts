@@ -25,12 +25,6 @@ export type Category = {
   name: Scalars['String']
 }
 
-export type CategoryOnPost = {
-  __typename?: 'CategoryOnPost'
-  category?: Maybe<Category>
-  categoryId: Scalars['ID']
-}
-
 export type IntercomMessage = {
   __typename?: 'IntercomMessage'
   payload?: Maybe<Scalars['JSON']>
@@ -68,7 +62,7 @@ export type MutationRegisterArgs = {
 export type Post = {
   __typename?: 'Post'
   author?: Maybe<User>
-  categories?: Maybe<Array<CategoryOnPost>>
+  categories?: Maybe<Array<Category>>
   id: Scalars['ID']
   title: Scalars['String']
 }
@@ -80,13 +74,12 @@ export type Query = {
 }
 
 export type RegisterInput = {
-  avatarUrl?: Maybe<Scalars['String']>
   email: Scalars['String']
-  firstName?: Maybe<Scalars['String']>
-  lastName?: Maybe<Scalars['String']>
+  firstName: Scalars['String']
+  lastName: Scalars['String']
   password: Scalars['String']
-  phone?: Maybe<Scalars['String']>
-  username?: Maybe<Scalars['String']>
+  phone: Scalars['String']
+  username: Scalars['String']
 }
 
 /** User role */
@@ -107,24 +100,19 @@ export type SubscriptionIntercomSubArgs = {
 
 export type User = {
   __typename?: 'User'
-  /** User avatar image - By default extract gravatar related to email, but you can use another URL */
-  avatarUrl?: Maybe<Scalars['String']>
-  bio?: Maybe<Scalars['String']>
-  /** Creation date - This field is created automatically */
-  createdAt?: Maybe<Scalars['DateTime']>
-  /** User email - Must be unique */
+  avatarUrl: Scalars['String']
+  bio: Scalars['String']
+  createdAt: Scalars['DateTime']
   email: Scalars['String']
-  firstName?: Maybe<Scalars['String']>
+  firstName: Scalars['String']
   id: Scalars['ID']
-  lastName?: Maybe<Scalars['String']>
-  location?: Maybe<Scalars['String']>
-  password?: Maybe<Scalars['String']>
-  phone?: Maybe<Scalars['String']>
+  lastName: Scalars['String']
+  location: Scalars['String']
+  password: Scalars['String']
+  phone: Scalars['String']
   posts?: Maybe<Array<Post>>
   role?: Maybe<Role>
-  /** Last updated date - This field is created automatically */
-  updatedAt?: Maybe<Scalars['DateTime']>
-  /** User username - Must be unique */
+  updatedAt: Scalars['DateTime']
   username: Scalars['String']
 }
 
@@ -142,7 +130,7 @@ export type UserTokenDetailsFragment = { __typename?: 'UserToken' } & Pick<UserT
 export type UserDetailsFragment = { __typename?: 'User' } & Pick<
   User,
   'id' | 'firstName' | 'lastName' | 'username' | 'avatarUrl' | 'email'
->
+> & { posts?: Maybe<Array<{ __typename?: 'Post' } & PostsFragment>> }
 
 export type MeQueryVariables = Exact<{ [key: string]: never }>
 
@@ -193,6 +181,39 @@ export type IntercomSubSubscription = { __typename?: 'Subscription' } & {
   intercomSub?: Maybe<{ __typename?: 'IntercomMessage' } & IntercomDetailsFragment>
 }
 
+export type PostsFragment = { __typename?: 'Post' } & Pick<Post, 'id' | 'title'> & {
+    author?: Maybe<
+      { __typename?: 'User' } & Pick<User, 'id' | 'firstName' | 'lastName' | 'username' | 'avatarUrl' | 'email'>
+    >
+    categories?: Maybe<Array<{ __typename?: 'Category' } & CategoriesFragment>>
+  }
+
+export type CategoriesFragment = { __typename?: 'Category' } & Pick<Category, 'id' | 'name'>
+
+export const CategoriesFragmentDoc = gql`
+  fragment categories on Category {
+    id
+    name
+  }
+`
+export const PostsFragmentDoc = gql`
+  fragment posts on Post {
+    id
+    title
+    author {
+      id
+      firstName
+      lastName
+      username
+      avatarUrl
+      email
+    }
+    categories {
+      ...categories
+    }
+  }
+  ${CategoriesFragmentDoc}
+`
 export const UserDetailsFragmentDoc = gql`
   fragment UserDetails on User {
     id
@@ -201,7 +222,11 @@ export const UserDetailsFragmentDoc = gql`
     username
     avatarUrl
     email
+    posts {
+      ...posts
+    }
   }
+  ${PostsFragmentDoc}
 `
 export const UserTokenDetailsFragmentDoc = gql`
   fragment UserTokenDetails on UserToken {

@@ -1,0 +1,32 @@
+fragment posts on Post {
+  id
+  title
+  author {
+    id
+    firstName
+    lastName
+    username
+    avatarUrl
+    email
+  }
+  categories {
+    ...categories
+  }
+}
+
+fragment categories on Category {
+  id
+  name
+}
+
+# query posts {
+#   posts {
+#     ...posts
+#   }
+# }
+
+# query categories {
+#   categories {
+#     ...categories
+#   }
+# }
