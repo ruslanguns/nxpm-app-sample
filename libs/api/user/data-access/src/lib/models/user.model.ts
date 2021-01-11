@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql'
-import { Role } from '@app-core/api/auth/data-access'
+import { Post } from './post'
+import { Role } from './role'
 
 @ObjectType()
 export class User {
@@ -36,37 +37,6 @@ export class User {
   @Field(() => Role, { nullable: true })
   role: Role
 
-  @Field(() => [Post], { nullable: true })
-  posts: Post[]
-}
-
-@ObjectType()
-export class Post {
-  @Field((type) => ID)
-  id: string
-
-  title: string
-
-  @Field(() => User, { nullable: true })
-  author: User
-
-  @Field(() => [CategoryOnPost], { nullable: true })
-  categories: CategoryOnPost[]
-}
-
-@ObjectType()
-export class Category {
-  @Field((type) => ID)
-  id: string
-
-  name: string
-}
-
-@ObjectType()
-export class CategoryOnPost {
-  @Field((type) => ID)
-  categoryId: string
-
-  @Field(() => Category, { nullable: true })
-  category: Category
+  // @Field(() => [Post], { nullable: true })
+  // posts: any[]
 }
