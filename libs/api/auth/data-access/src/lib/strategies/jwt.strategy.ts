@@ -1,7 +1,7 @@
+import { cookieExtractor } from '@app-core/api/core/data-access'
 import { Injectable, UnauthorizedException } from '@nestjs/common'
 import { PassportStrategy } from '@nestjs/passport'
-import { ExtractJwt, Strategy } from 'passport-jwt'
-import { cookieExtractor } from '../api-auth-data-access.helper'
+import { Strategy } from 'passport-jwt'
 import { ApiAuthDataAccessService } from '../api-auth-data-access.service'
 import { JwtDto } from '../dto/jwt.dto'
 

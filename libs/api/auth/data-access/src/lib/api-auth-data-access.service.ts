@@ -1,25 +1,23 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
-import { UserCreateInput } from '@prisma/client'
-import { ApiCoreDataAccessService } from '@app-core/api/core/data-access'
+import { validatePassword } from '@app-core/api/core/data-access'
+import { ApiUserDataAccessService } from '@app-core/api/user/data-access'
 import { ApiCoreFeatureService } from '@app-core/api/core/feature'
 import { Response } from 'express'
-import { getGravatarUrl, hashPassword, validatePassword } from './api-auth-data-access.helper'
 import { LoginInput } from './dto/login.input'
 import { RegisterInput } from './dto/register.input'
 import { UserToken } from './models/user-token.model'
-import { Role } from './models/role'
 
 @Injectable()
 export class ApiAuthDataAccessService {
   constructor(
-    private readonly data: ApiCoreDataAccessService,
     private readonly core: ApiCoreFeatureService,
+    private readonly data: ApiUserDataAccessService,
     private readonly jwtService: JwtService,
   ) {}
 
   async register(payload: RegisterInput) {
-    const user = await this.createUser({
+    const user = await this.data.createUser({
       ...payload,
     })
 
@@ -29,13 +27,13 @@ export class ApiAuthDataAccessService {
   async login(input: LoginInput) {
     const email = input.email.trim()
     const password = input.password.trim()
-    const user = await this.findUserByEmail(email)
+    const user = await this.data.findUserByEmail(email)
 
     if (!user) {
       throw new NotFoundException(`No user found for email: ${email}`)
     }
 
-    const passwordValid = await validatePassword(password, user.password)
+    const passwordValid = validatePassword(password, user.password)
 
     if (!passwordValid) {
       throw new BadRequestException('Invalid password')
@@ -50,57 +48,16 @@ export class ApiAuthDataAccessService {
   }
 
   validateUser(userId: string) {
-    return this.findUserById(userId)
+    return this.data.findUserById(userId)
   }
 
   getUserFromToken(token: string) {
     const userId = this.jwtService.decode(token)['userId']
 
-    return this.findUserById(userId)
+    return this.data.findUserById(userId)
   }
 
-  public async findUserByEmail(email: string) {
-    return await this.data.user.findUnique({
-      where: { email },
-      include: { posts: { include: { categories: { include: { category: true, post: true } }, author: true } } },
-    })
-  }
-
-  public async findUserById(userId: string) {
-    return await this.data.user.findUnique({
-      where: { id: userId },
-      include: { posts: { include: { categories: { include: { category: true, post: true } }, author: true } } },
-    })
-  }
-
-  public async findUserByUsername(username: string) {
-    return await this.data.user.findUnique({
-      where: { username },
-      include: { posts: { include: { categories: { include: { category: true, post: true } }, author: true } } },
-    })
-  }
-
-  async createUser(input: Partial<UserCreateInput>) {
-    const password = input.password
-    const hashedPassword = hashPassword(password)
-    const email = input.email.trim()
-    const username = input.username || email
-
-    return this.data.user.create({
-      data: {
-        firstName: input.firstName,
-        lastName: input.lastName,
-        email,
-        phone: input.phone,
-        username,
-        avatarUrl: input.avatarUrl || getGravatarUrl(input.email.toLowerCase()),
-        password: hashedPassword,
-        role: Role.User,
-      },
-    })
-  }
-
-  public setCookie(res: Response, token: string) {
+  setCookie(res: Response, token: string) {
     return res?.cookie(this.core.cookie.name, token, this.core.cookie.options)
   }
 

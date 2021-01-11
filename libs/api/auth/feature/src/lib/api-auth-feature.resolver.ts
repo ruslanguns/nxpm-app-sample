@@ -4,9 +4,9 @@ import {
   GqlAuthGuard,
   LoginInput,
   RegisterInput,
-  User,
   UserToken,
 } from '@app-core/api/auth/data-access'
+import { User } from '@app-core/api/user/data-access'
 import { Context, Query, Resolver, Mutation, Args, ResolveField, Parent } from '@nestjs/graphql'
 import { UseGuards } from '@nestjs/common'
 

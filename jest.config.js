@@ -20,5 +20,7 @@ module.exports = {
     // '<rootDir>/libs/web/style',
     '<rootDir>/libs/web/ui-form',
     '<rootDir>/libs/web/blog/feature',
+    '<rootDir>/libs/api/user/data-access',
+    '<rootDir>/libs/api/user/feature',
   ],
 }

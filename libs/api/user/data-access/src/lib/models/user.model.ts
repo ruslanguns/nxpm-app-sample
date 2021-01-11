@@ -1,5 +1,5 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql'
-import { Role } from './role'
+import { Role } from '@app-core/api/auth/data-access'
 
 @ObjectType()
 export class User {
