@@ -9,7 +9,7 @@ export class ApiUserDataAccessService {
   async findUserById(userId: string) {
     return await this.data.user.findUnique({
       where: { id: userId },
-      include: { posts: { include: { categories: { include: { category: true, post: true } }, author: true } } },
+      include: { posts: { include: { categories: true, author: true } } },
     })
   }
 
@@ -36,14 +36,14 @@ export class ApiUserDataAccessService {
   async findUserByEmail(email: string) {
     return await this.data.user.findUnique({
       where: { email },
-      include: { posts: { include: { categories: { include: { category: true, post: true } }, author: true } } },
+      include: { posts: { include: { categories: true, author: true } } },
     })
   }
 
   async findUserByUsername(username: string) {
     return await this.data.user.findUnique({
       where: { username },
-      include: { posts: { include: { categories: { include: { category: true, post: true } }, author: true } } },
+      include: { posts: { include: { categories: true, author: true } } },
     })
   }
 }
