@@ -36,20 +36,11 @@ model Post {
   title      String
   author     User                @relation(fields: [authorId], references: [id])
   authorId   String
-  categories CategoriesOnPosts[]
+  categories Category[]
 }
 
 model Category {
   id    String              @id @default(cuid())
   name  String
-  posts CategoriesOnPosts[]
-}
-
-model CategoriesOnPosts {
-  post       Post     @relation(fields: [postId], references: [id])
-  postId     String // relation scalar field (used in the `@relation` attribute above)
-  category   Category @relation(fields: [categoryId], references: [id])
-  categoryId String // relation scalar field (used in the `@relation` attribute above)
-
-  @@id([postId, categoryId])
+  posts Post[]
 }

@@ -4,7 +4,6 @@
 
 type Category {
   id: ID!
-  name: String!
 }
 
 type CategoryOnPost {
@@ -44,7 +43,6 @@ type Post {
   author: User
   categories: [CategoryOnPost!]
   id: ID!
-  title: String!
 }
 
 type Query {
