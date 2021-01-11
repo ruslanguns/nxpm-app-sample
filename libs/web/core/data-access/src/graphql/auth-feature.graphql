@@ -12,9 +12,6 @@ fragment UserDetails on User {
   username
   avatarUrl
   email
-  posts {
-    ...posts
-  }
 }
 
 query me {

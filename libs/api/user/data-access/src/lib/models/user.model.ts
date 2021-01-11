@@ -8,41 +8,41 @@ export class User {
   id: string
 
   /** Creation date - This field is created automatically */
-  @Field()
+  @Field({ nullable: true })
   createdAt?: Date
 
   /** Last updated date - This field is created automatically */
-  @Field()
+  @Field({ nullable: true })
   updatedAt?: Date
 
   /** User email - Must be unique */
   @Field()
   email!: string
 
-  @Field()
+  @Field({ nullable: true })
   phone?: string
 
   /** User username - Must be unique */
   @Field()
   username!: string
 
-  @Field()
+  @Field({ nullable: true })
   firstName?: string
 
-  @Field()
+  @Field({ nullable: true })
   lastName?: string
 
   /** User avatar image - By default extract gravatar related to email, but you can use another URL */
-  @Field()
+  @Field({ nullable: true })
   avatarUrl?: string
 
-  @Field()
+  @Field({ nullable: true })
   location?: string
 
-  @Field()
+  @Field({ nullable: true })
   bio?: string
 
-  @Field()
+  @Field({ nullable: true })
   password?: string
 
   @Field(() => Role, { nullable: true })

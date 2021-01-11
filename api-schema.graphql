@@ -67,19 +67,19 @@ type Subscription {
 }
 
 type User {
-  avatarUrl: String!
-  bio: String!
-  createdAt: DateTime!
+  avatarUrl: String
+  bio: String
+  createdAt: DateTime
   email: String!
-  firstName: String!
+  firstName: String
   id: ID!
-  lastName: String!
-  location: String!
-  password: String!
-  phone: String!
+  lastName: String
+  location: String
+  password: String
+  phone: String
   posts: [Post!]
   role: Role
-  updatedAt: DateTime!
+  updatedAt: DateTime
   username: String!
 }
 
