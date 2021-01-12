@@ -94,6 +94,48 @@
         }
       }
     },
+    "api-blog-data-access": {
+      "root": "libs/api/blog/data-access",
+      "sourceRoot": "libs/api/blog/data-access/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/api/blog/data-access/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/blog/data-access"],
+          "options": {
+            "jestConfig": "libs/api/blog/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "api-blog-feature": {
+      "root": "libs/api/blog/feature",
+      "sourceRoot": "libs/api/blog/feature/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/api/blog/feature/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/blog/feature"],
+          "options": {
+            "jestConfig": "libs/api/blog/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "api-core-data-access": {
       "root": "libs/api/core/data-access",
       "sourceRoot": "libs/api/core/data-access/src",

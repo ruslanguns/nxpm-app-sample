@@ -22,5 +22,7 @@ module.exports = {
     '<rootDir>/libs/web/blog/feature',
     '<rootDir>/libs/api/user/data-access',
     '<rootDir>/libs/api/user/feature',
+    '<rootDir>/libs/api/blog/data-access',
+    '<rootDir>/libs/api/blog/feature',
   ],
 }

@@ -18,6 +18,8 @@
       "@app-core/api-app-module": ["apps/api/src/app/app.module.ts"],
       "@app-core/api/auth/data-access": ["libs/api/auth/data-access/src/index.ts"],
       "@app-core/api/auth/feature": ["libs/api/auth/feature/src/index.ts"],
+      "@app-core/api/blog/data-access": ["libs/api/blog/data-access/src/index.ts"],
+      "@app-core/api/blog/feature": ["libs/api/blog/feature/src/index.ts"],
       "@app-core/api/core/data-access": ["libs/api/core/data-access/src/index.ts"],
       "@app-core/api/core/feature": ["libs/api/core/feature/src/index.ts"],
       "@app-core/api/user/data-access": ["libs/api/user/data-access/src/index.ts"],

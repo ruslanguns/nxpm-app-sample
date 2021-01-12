@@ -32,6 +32,12 @@
     "api-auth-feature": {
       "tags": ["scope:api", "type:feature"]
     },
+    "api-blog-data-access": {
+      "tags": ["scope:api", "type:data-access"]
+    },
+    "api-blog-feature": {
+      "tags": ["scope:api", "type:feature"]
+    },
     "api-core-data-access": {
       "tags": ["scope:api", "type:data-access"]
     },

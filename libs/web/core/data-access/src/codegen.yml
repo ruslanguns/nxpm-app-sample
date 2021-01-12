@@ -1,5 +1,6 @@
 overwrite: true
-schema: 'http://localhost:3000/graphql'
+# schema: 'http://localhost:3000/graphql'
+schema: 'api-schema.graphql'
 documents:
   - 'libs/web/core/data-access/src/graphql/**/*.graphql'
 generates:

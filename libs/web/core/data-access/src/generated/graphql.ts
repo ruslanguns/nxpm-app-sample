@@ -130,7 +130,7 @@ export type UserTokenDetailsFragment = { __typename?: 'UserToken' } & Pick<UserT
 export type UserDetailsFragment = { __typename?: 'User' } & Pick<
   User,
   'id' | 'firstName' | 'lastName' | 'username' | 'avatarUrl' | 'email'
->
+> & { posts?: Maybe<Array<{ __typename?: 'Post' } & PostsFragment>> }
 
 export type MeQueryVariables = Exact<{ [key: string]: never }>
 
@@ -190,32 +190,6 @@ export type PostsFragment = { __typename?: 'Post' } & Pick<Post, 'id' | 'title'>
 
 export type CategoriesFragment = { __typename?: 'Category' } & Pick<Category, 'id' | 'name'>
 
-export const UserDetailsFragmentDoc = gql`
-  fragment UserDetails on User {
-    id
-    firstName
-    lastName
-    username
-    avatarUrl
-    email
-  }
-`
-export const UserTokenDetailsFragmentDoc = gql`
-  fragment UserTokenDetails on UserToken {
-    token
-    user {
-      ...UserDetails
-    }
-  }
-  ${UserDetailsFragmentDoc}
-`
-export const IntercomDetailsFragmentDoc = gql`
-  fragment IntercomDetails on IntercomMessage {
-    type
-    scope
-    payload
-  }
-`
 export const CategoriesFragmentDoc = gql`
   fragment categories on Category {
     id
@@ -239,6 +213,36 @@ export const PostsFragmentDoc = gql`
     }
   }
   ${CategoriesFragmentDoc}
+`
+export const UserDetailsFragmentDoc = gql`
+  fragment UserDetails on User {
+    id
+    firstName
+    lastName
+    username
+    avatarUrl
+    email
+    posts {
+      ...posts
+    }
+  }
+  ${PostsFragmentDoc}
+`
+export const UserTokenDetailsFragmentDoc = gql`
+  fragment UserTokenDetails on UserToken {
+    token
+    user {
+      ...UserDetails
+    }
+  }
+  ${UserDetailsFragmentDoc}
+`
+export const IntercomDetailsFragmentDoc = gql`
+  fragment IntercomDetails on IntercomMessage {
+    type
+    scope
+    payload
+  }
 `
 export const MeDocument = gql`
   query me {
